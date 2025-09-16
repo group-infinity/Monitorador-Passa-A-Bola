@@ -1,7 +1,7 @@
 
 # 💡 Passa Bola – Projeto de Monitoramento e Gamificação para Futebol Feminino
 
-Este projeto foi desenvolvido para as disciplinas de **Edge Computing & Computer Systems** e **Computational Thinking with Python** na FIAP. A solução integra um backend em **Python com FastAPI**, um frontend moderno em **React com TypeScript**, e a plataforma **FIWARE** para simular o monitoramento de atletas em tempo real.
+Este projeto foi desenvolvido para as disciplinas de **Edge Computing & Computer Systems** e **Computational Thinking with Python** na FIAP. A solução integra um backend em **Python com FastAPI**, um frontend moderno em **React com TypeScript**, e a plataforma **FIWARE** — hospedada em uma máquina virtual no Microsoft Azure para simular o monitoramento de atletas em tempo real.
 
 O objetivo principal é criar um sistema que não apenas coleta e exibe sinais vitais, como frequência cardíaca e saturação de oxigênio, mas também aplica uma camada de **gamificação** para engajar as atletas e analisar a performance de forma inovadora.
 
