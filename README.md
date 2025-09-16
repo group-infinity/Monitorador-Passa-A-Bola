@@ -6,6 +6,7 @@ Este projeto foi desenvolvido para as disciplinas de **Edge Computing & Computer
 O objetivo principal é criar um sistema que não apenas coleta e exibe sinais vitais, como frequência cardíaca e saturação de oxigênio, mas também aplica uma camada de **gamificação** para engajar as atletas e analisar a performance de forma inovadora.
 
 🔗 **Vídeo explicativo no YouTube:** [Clique aqui para abrir](https://www.youtube.com/watch?v=dQw4w9WgXcQ)
+🔗 **Pro jeto no Wokwi:** [Clique aqui para abrir](https://wokwi.com/projects/441120883888823297)
 
 -----
 
