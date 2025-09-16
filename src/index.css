@@ -1,0 +1,256 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  :root {
+    /* Athletic monitoring dark theme */
+    --background: 224 30% 5%;
+    --foreground: 210 40% 98%;
+    --card: 224 35% 8%;
+    --card-foreground: 210 40% 98%;
+    --popover: 224 35% 8%;
+    --popover-foreground: 210 40% 98%;
+    
+    /* Primary - Enhanced purple gradient */
+    --primary: 271 91% 65%;
+    --primary-foreground: 0 0% 100%;
+    --primary-variant: 280 100% 70%;
+    --primary-glow: 271 91% 75%;
+
+    /* Secondary - Deep athletic blue */
+    --secondary: 210 40% 15%;
+    --secondary-foreground: 210 40% 98%;
+
+    /* Accent - Electric cyan */
+    --accent: 192 91% 65%;
+    --accent-foreground: 0 0% 100%;
+
+    /* Surface colors for layering */
+    --surface-primary: 224 35% 8%;
+    --surface-secondary: 224 30% 12%;
+    --surface-accent: 224 25% 16%;
+    
+    /* Status colors - Athletic performance */
+    --status-excellent: 142 76% 36%;
+    --status-good: 47 96% 53%;
+    --status-warning: 25 95% 53%;
+    --status-danger: 0 84% 60%;
+    --status-info: 192 91% 65%;
+    
+    /* BPM monitoring colors */
+    --bpm-low: 192 91% 65%;
+    --bpm-normal: 142 76% 36%;
+    --bpm-elevated: 47 96% 53%;
+    --bpm-high: 0 84% 60%;
+
+    /* System colors */
+    --muted: 210 40% 15%;
+    --muted-foreground: 215 20% 65%;
+    --destructive: 0 84% 60%;
+    --destructive-foreground: 0 0% 100%;
+    --border: 214 32% 20%;
+    --input: 214 32% 20%;
+    --ring: 271 91% 65%;
+    --radius: 1rem;
+
+    /* Enhanced gradients */
+    --gradient-hero: linear-gradient(135deg, hsl(271 91% 65%) 0%, hsl(280 100% 70%) 50%, hsl(192 91% 65%) 100%);
+    --gradient-card: linear-gradient(145deg, hsl(224 35% 8% / 0.8) 0%, hsl(224 30% 12% / 0.9) 100%);
+    --gradient-primary: linear-gradient(135deg, hsl(271 91% 65%) 0%, hsl(280 100% 70%) 100%);
+    --gradient-accent: linear-gradient(135deg, hsl(192 91% 65%) 0%, hsl(210 100% 70%) 100%);
+    --gradient-surface: linear-gradient(145deg, hsl(224 35% 8% / 0.8) 0%, hsl(224 30% 12% / 0.9) 100%);
+
+    /* Professional shadows */
+    --shadow-glow-primary: 0 0 40px hsl(271 91% 65% / 0.4);
+    --shadow-glow-accent: 0 0 40px hsl(192 91% 65% / 0.3);
+    --shadow-elevation: 0 8px 32px hsl(224 30% 5% / 0.5);
+    --shadow-card: 0 4px 20px hsl(224 30% 5% / 0.3);
+    
+    /* Smooth transitions */
+    --transition-smooth: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    --transition-bounce: all 0.4s cubic-bezier(0.68, -0.55, 0.265, 1.55);
+
+    /* Sidebar colors */
+    --sidebar-background: 224 35% 8%;
+    --sidebar-foreground: 210 40% 98%;
+    --sidebar-primary: 271 91% 65%;
+    --sidebar-primary-foreground: 0 0% 100%;
+    --sidebar-accent: 224 25% 16%;
+    --sidebar-accent-foreground: 210 40% 98%;
+    --sidebar-border: 214 32% 20%;
+    --sidebar-ring: 271 91% 65%;
+  }
+
+  /* Light mode - maintaining professional athletic theme */
+  .light {
+    --background: 210 20% 98%;
+    --foreground: 224 35% 8%;
+    --card: 0 0% 100%;
+    --card-foreground: 224 35% 8%;
+    --surface-primary: 0 0% 100%;
+    --surface-secondary: 210 20% 96%;
+    --surface-accent: 210 20% 93%;
+    --muted: 210 20% 96%;
+    --muted-foreground: 215 16% 47%;
+    --border: 214 32% 91%;
+    --input: 214 32% 91%;
+    
+    --gradient-card: linear-gradient(145deg, hsl(0 0% 100% / 0.9) 0%, hsl(210 20% 96% / 0.8) 100%);
+    --shadow-card: 0 4px 20px hsl(224 35% 8% / 0.08);
+  }
+}
+
+@layer base {
+  * {
+    @apply border-border;
+  }
+
+  body {
+    @apply bg-background text-foreground;
+    font-feature-settings: "rlig" 1, "calt" 1;
+  }
+}
+
+@layer components {
+  /* Athletic card system */
+  .card-athletic {
+    @apply bg-gradient-to-br from-surface-primary to-surface-secondary border border-white/10 backdrop-blur-lg rounded-2xl;
+    box-shadow: var(--shadow-card);
+  }
+  
+  .card-floating {
+    @apply card-athletic shadow-elevation hover:shadow-glow-primary;
+    transition: var(--transition-smooth);
+  }
+  
+  .card-stat {
+    @apply card-athletic p-6 space-y-4;
+  }
+  
+  /* Enhanced button system */
+  .btn-athletic {
+    @apply px-6 py-3 rounded-xl font-semibold transition-bounce;
+  }
+  
+  .btn-primary {
+    @apply btn-athletic bg-gradient-to-r from-primary to-accent text-primary-foreground shadow-glow-primary;
+  }
+  
+  .btn-accent {
+    @apply btn-athletic bg-gradient-to-r from-accent to-status-info text-accent-foreground shadow-glow-accent;
+  }
+  
+  /* Status indicators for athletic metrics */
+  .status-excellent { @apply bg-status-excellent text-white; }
+  .status-good { @apply bg-status-good text-black; }
+  .status-warning { @apply bg-status-warning text-black; }
+  .status-danger { @apply bg-status-danger text-white; }
+  .status-info { @apply bg-status-info text-white; }
+  
+  /* BPM specific styling */
+  .bpm-low { @apply bg-bpm-low text-white; }
+  .bpm-normal { @apply bg-bpm-normal text-white; }
+  .bpm-elevated { @apply bg-bpm-elevated text-black; }
+  .bpm-high { @apply bg-bpm-high text-white; }
+}
+
+@layer utilities {
+  /* Enhanced background gradients */
+  .gradient-hero { background: var(--gradient-hero); }
+  .gradient-card { background: var(--gradient-card); }
+  .gradient-primary { background: var(--gradient-primary); }
+  .gradient-accent { background: var(--gradient-accent); }
+  .gradient-surface { background: var(--gradient-surface); }
+  
+  /* Surface color utilities */
+  .bg-surface-primary { background-color: hsl(var(--surface-primary)); }
+  .bg-surface-secondary { background-color: hsl(var(--surface-secondary)); }
+  .bg-surface-accent { background-color: hsl(var(--surface-accent)); }
+  
+  /* Athletic shadow system */
+  .shadow-glow-primary { box-shadow: var(--shadow-glow-primary); }
+  .shadow-glow-accent { box-shadow: var(--shadow-glow-accent); }
+  .shadow-elevation { box-shadow: var(--shadow-elevation); }
+  .shadow-card { box-shadow: var(--shadow-card); }
+  
+  /* Professional transitions */
+  .transition-smooth { transition: var(--transition-smooth); }
+  .transition-bounce { transition: var(--transition-bounce); }
+  
+  /* Enhanced animations */
+  .animate-pulse-glow {
+    animation: pulse-glow 2s cubic-bezier(0.4, 0, 0.6, 1) infinite;
+  }
+  
+  .animate-bounce-in {
+    animation: bounce-in 0.8s cubic-bezier(0.68, -0.55, 0.265, 1.55);
+  }
+  
+  .animate-slide-up {
+    animation: slide-up 0.6s cubic-bezier(0.4, 0, 0.2, 1);
+  }
+  
+  .animate-fade-in {
+    animation: fade-in 0.8s cubic-bezier(0.4, 0, 0.2, 1);
+  }
+  
+  .animate-scale-in {
+    animation: scale-in 0.5s cubic-bezier(0.4, 0, 0.2, 1);
+  }
+}
+
+/* Professional keyframe animations */
+@keyframes pulse-glow {
+  0%, 100% {
+    box-shadow: 0 0 20px hsl(271 91% 65% / 0.4);
+  }
+  50% {
+    box-shadow: 0 0 40px hsl(271 91% 65% / 0.8);
+  }
+}
+
+@keyframes bounce-in {
+  0% {
+    transform: scale(0.8) translateY(20px);
+    opacity: 0;
+  }
+  60% {
+    transform: scale(1.02) translateY(-5px);
+  }
+  100% {
+    transform: scale(1) translateY(0);
+    opacity: 1;
+  }
+}
+
+@keyframes slide-up {
+  0% {
+    transform: translateY(30px);
+    opacity: 0;
+  }
+  100% {
+    transform: translateY(0);
+    opacity: 1;
+  }
+}
+
+@keyframes fade-in {
+  0% {
+    opacity: 0;
+  }
+  100% {
+    opacity: 1;
+  }
+}
+
+@keyframes scale-in {
+  0% {
+    transform: scale(0.95);
+    opacity: 0;
+  }
+  100% {
+    transform: scale(1);
+    opacity: 1;
+  }
+}
