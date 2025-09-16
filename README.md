@@ -62,26 +62,44 @@ A aplicação é dividida em quatro camadas principais que trabalham em conjunto
 
 ```mermaid
 graph TD;
-    A[Simulação de Sensores<br>(Wokwi)] -- Dados de BPM/SpO2 --> B(FIWARE Orion<br>Context Broker);
-    B -- GET /v2/entities --> C{Backend API<br>(Python/FastAPI)};
-    C -- API RESTful (JSON) --> D[Frontend Web<br>(React/TypeScript)];
-    D -- Ações do Usuário (POST) --> C;
-
-    subgraph "Camada 1: Fonte de Dados"
-        A
+    subgraph Application
+        direction LR
+        G["Frontend Web App (React)<br>Dashboard & Controles"];
+        F["Backend API (Python/FastAPI)<br>Lógica & Gamificação"];
+        H[("Usuário<br>(Técnico/Atleta)")];
     end
 
-    subgraph "Camada 2: Plataforma IoT"
-        B
+    subgraph "Back-end (FIWARE)"
+        direction BT
+        D["Orion Context Broker"];
+        C["IoT Agent MQTT"];
+        B["MQTT Broker"];
+        E[("MongoDB Internal")];
     end
 
-    subgraph "Camada 3: Lógica da Aplicação"
-        C
+    subgraph IoT
+        A["Sensores da Atleta<br>(Simulação Wokwi)"];
     end
 
-    subgraph "Camada 4: Interface do Usuário"
-        D
-    end
+    %% Fluxo de Dados
+    A -- "1. Dados (MQTT)" --> B;
+    B -- "2. " --> C;
+    C -- "3. Update (NGSIv2)" --> D;
+    D -- "Armazenamento" <--> E;
+    F -- "4. Consulta (NGSIv2 / HTTP)" --> D;
+    G -- "5. Consome API (REST)" --> F;
+    F -- "6. Envia Dados (JSON)" --> G;
+    H -- "7. Interação" <--> G;
+
+    %% Estilo
+    style A fill:#D4EDFF,stroke:#333
+    style B fill:#FFF0C1,stroke:#333
+    style C fill:#FFF0C1,stroke:#333
+    style D fill:#FFF0C1,stroke:#333
+    style E fill:#E2F0D9,stroke:#333
+    style F fill:#F8D7DA,stroke:#333
+    style G fill:#D1ECF1,stroke:#333
+    style H fill:#E2E3E5,stroke:#333
 ```
 
 #### Fluxo de Dados:
