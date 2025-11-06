@@ -28,15 +28,15 @@ const char* PASSWORD = "";
 
 // --- CONFIGURAÇÕES FIWARE MQTT ---
 // Endereço IP do broker MQTT do FIWARE
-const char* MQTT_BROKER_IP = "20.171.8.213";
+const char* MQTT_BROKER_IP = "20.75.52.55";
 // Porta padrão para comunicação MQTT
 const int MQTT_PORT = 1883;
 // Identificador único para este cliente MQTT. Evita conflitos no broker.
 const char* MQTT_CLIENT_ID = "esp32-atleta-monitor-01";
 // Tópico MQTT onde os dados dos sensores (atributos) serão publicados
-const char* MQTT_TOPIC_PUBLISH = "/TEF/atleta0001/attrs";
+const char* MQTT_TOPIC_PUBLISH = "/TEF/watch001/attrs";
 // Tópico MQTT que o ESP32 vai "escutar" para receber comandos
-const char* MQTT_TOPIC_SUBSCRIBE = "/TEF/atleta0001/cmd";
+const char* MQTT_TOPIC_SUBSCRIBE = "/TEF/watch001/cmd";
 
 // --- OBJETOS GLOBAIS ---
 // Cria o objeto 'dht' para interagir com o sensor DHT22
