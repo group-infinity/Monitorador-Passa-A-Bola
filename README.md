@@ -376,7 +376,53 @@ Verifica a saúde da aplicação, incluindo a conexão com o FIWARE.
 }
 ```
 
------
+----
+
+## 🗂️ Integração com o STH-Comet (Histórico de Dados)
+
+O **STH-Comet** é o componente do FIWARE responsável por armazenar **séries temporais** dos atributos da atleta — como **BPM (bpm)** e **Saturação (spo2)**.  
+Ele permite gerar gráficos históricos, médias e tendências ao longo do treino.
+
+### 🔔 Como os dados chegam ao STH-Comet
+
+1. O Wokwi envia os dados via MQTT → IoT Agent  
+2. O IoT Agent atualiza a entidade no **Orion Context Broker**  
+3. O Orion notifica o **STH-Comet** através de uma assinatura NGSIv2:
+
+```json
+{
+  "description": "Histórico Watch 001 no STH",
+  "subject": { "entities": [{ "id": "urn:ngsi-ld:watch:001", "type": "watch" }] },
+  "notification": {
+    "http": { "url": "http://AZURE_IP:8666/notify" },
+    "httpCustom": {
+      "headers": {
+        "Fiware-Service": "smart",
+        "Fiware-ServicePath": "/"
+      }
+    },
+    "attrs": ["bpm", "spo2"],
+    "attrsFormat": "legacy"
+  }
+}
+````
+
+### 📊 Consultando o histórico
+
+**Últimos 10 valores de BPM:**
+
+```bash
+GET http://AZURE_IP:8666/STH/v1/contextEntities/type/watch/id/urn:ngsi-ld:watch:001/attributes/bpm?lastN=10
+```
+
+**Média de SpO2 por minuto:**
+
+```bash
+GET http://AZURE_IP:8666/STH/v1/contexts/type/watch/id/urn:ngsi-ld:watch:001/attributes/spo2?aggrMethod=avg&aggrPeriod=minute&lastN=30
+
+```
+---
+
 
 ## 👥 Membros do Grupo
 
